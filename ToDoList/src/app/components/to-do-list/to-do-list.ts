@@ -11,7 +11,7 @@ import { MatInputModule } from '@angular/material/input';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ToDoList {
-  tasks = [
+  tasks: string[] = [
     'Buy a new gaming laptop',
     'Complete previous task',
     'Create some angular app'
