@@ -1,9 +1,9 @@
 <h1>ToDo List</h1>
 
 <ul class="tasks">
-    @for (task of tasks; track $index) {
+    @for (task of tasks; track task.id) {
     <li class="task row mb">
-        {{ task }}
+        {{ task.text }}
         <button type="submit" disabled matButton="outlined">Delete</button>
     </li>
     } @empty {
