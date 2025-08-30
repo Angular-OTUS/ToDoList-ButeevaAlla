@@ -2,10 +2,11 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-to-do-list',
-  imports: [MatButtonModule, MatFormFieldModule, MatInputModule],
+  imports: [MatButtonModule, MatFormFieldModule, MatInputModule, FormsModule],
   templateUrl: './to-do-list.html',
   styleUrls: ['./to-do-list.less'],
   changeDetection: ChangeDetectionStrategy.OnPush,
