@@ -4,7 +4,7 @@
     @for (task of tasks; track task.id) {
     <li class="task row mb">
         {{ task.text }}
-        <button type="submit" disabled matButton="outlined">Delete</button>
+        <button matButton="outlined" class="button button_delete">Delete</button>
     </li>
     } @empty {
     <li>Let's start planning</li>
@@ -16,5 +16,5 @@
         <mat-label>Add your new todo</mat-label>
         <input matInput placeholder="Conquer the world" maxlength="50" minlength="2">
     </mat-form-field>
-    <button type="submit" disabled matButton="filled" class="td-form__button">Add task</button>
+    <button type="submit" disabled matButton="outlined" class="button button_add td-form__button">Add task</button>
 </form>
