@@ -4,7 +4,7 @@
     @for (task of tasks; track task.id) {
     <li class="task row mb">
         {{ task.text }}
-        <button matButton="outlined" class="button button_delete">Delete</button>
+        <button matButton="outlined" class="button button_delete" on-click="delete(task.id)">Delete</button>
     </li>
     } @empty {
     <li>Let's start planning</li>

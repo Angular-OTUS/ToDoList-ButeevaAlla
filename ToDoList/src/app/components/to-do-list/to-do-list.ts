@@ -17,4 +17,8 @@ export class ToDoList {
     { id: 1, text: 'Complete previous task', },
     { id: 2, text: 'Create some angular app', },
   ]
+
+  delete(id: number): void {
+    this.tasks = this.tasks.filter((task) => task.id !== id);
+  }
 }
