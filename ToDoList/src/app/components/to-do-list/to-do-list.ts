@@ -17,8 +17,14 @@ export class ToDoList {
     { id: 1, text: 'Complete previous task', },
     { id: 2, text: 'Create some angular app', },
   ]
+  newTask: string = '';
 
   delete(id: number): void {
     this.tasks = this.tasks.filter((task) => task.id !== id);
+  }
+
+  add(newTask: string): void {
+    const nextId: number = Math.max(...this.tasks.map(task => task.id)) + 1;
+    this.tasks.push({ id: nextId, text: newTask, });
   }
 }
