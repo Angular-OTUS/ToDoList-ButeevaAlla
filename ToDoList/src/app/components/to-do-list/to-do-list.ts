@@ -3,16 +3,19 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
+import { Tasks } from '../../shared-sripts/interfaces';
+import { ToDoListItem } from './to-do-list-item/to-do-list-item';
 
 @Component({
   selector: 'app-to-do-list',
-  imports: [MatButtonModule, MatFormFieldModule, MatInputModule, FormsModule],
+  imports: [MatButtonModule, MatFormFieldModule, MatInputModule, FormsModule, ToDoListItem],
   templateUrl: './to-do-list.html',
-  styleUrls: ['./to-do-list.less'],
+  styleUrls: ['./to-do-list.less', '../../shared-styles/mixins.less', '../../shared-styles/buttons.less'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
+
 export class ToDoList {
-  tasks: { id: number, text: string }[] = [
+  tasks: Tasks = [
     { id: 0, text: 'Buy a new gaming laptop', },
     { id: 1, text: 'Complete previous task', },
     { id: 2, text: 'Create some angular app', },
