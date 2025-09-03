@@ -1,20 +1,17 @@
 <h1>ToDo List</h1>
 
 <ul class="tasks">
-    @for (task of tasks; track $index) {
-    <li class="task row mb">
-        {{ task }}
-        <button type="submit" disabled matButton="outlined">Delete</button>
-    </li>
+    @for (task of tasks; track task.id) {
+    <app-to-do-list-item [task]="task" (newItemEvent)="delete($event)" />
     } @empty {
     <li>Let's start planning</li>
     }
 </ul>
 
-<form class="mt-big row">
+<form class="mt-big row" #newTaskForm="ngForm">
     <mat-form-field appearance="outline">
         <mat-label>Add your new todo</mat-label>
-        <input matInput placeholder="Conquer the world" maxlength="50" minlength="2">
+        <input matInput [(ngModel)]="newTask" name="newTask" required placeholder="Conquer the world" maxlength="50" minlength="2">
     </mat-form-field>
-    <button type="submit" disabled matButton="filled" class="td-form__button">Add task</button>
+    <button type="submit" [disabled]="newTaskForm.invalid" matButton="outlined" class="button button_add td-form__button" on-click="add(newTask);newTaskForm.reset()">Add task</button>
 </form>

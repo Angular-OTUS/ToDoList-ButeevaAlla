@@ -1,0 +1,23 @@
+@import url(../shared-styles/variables.less);
+
+.button {
+    color: @color-lightest;
+    border: none;
+    outline: none;
+    border-radius: 1em;
+    line-height: 1;
+}
+
+.button:disabled {
+    opacity: .5;
+}
+
+.button_add {
+    background-color: @color-positive;
+}
+
+.button_delete {
+    background-color: @color-negative;
+    font-size: .75rem;
+    padding: .5em .5em .75em;
+}
