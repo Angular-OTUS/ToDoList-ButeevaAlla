@@ -1,4 +1,6 @@
+@if(task){
 <li class="task row mb">
-    {{ task.text }}
+    <span>{{ task.text }}</span>
     <button matButton="outlined" class="button button_delete" (click)="delete(task.id)">Delete</button>
 </li>
+}

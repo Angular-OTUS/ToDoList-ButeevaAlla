@@ -1,2 +1,1 @@
-export interface Task { id: number, text: string }
-export interface Tasks extends Array<Task> { };
+export interface ITask { id: number, text: string }

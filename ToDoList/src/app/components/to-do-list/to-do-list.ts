@@ -3,7 +3,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
-import { Tasks } from '../../shared-sripts/interfaces';
+import { ITask } from '../../shared-sripts/interfaces';
 import { ToDoListItem } from './to-do-list-item/to-do-list-item';
 
 @Component({
@@ -15,7 +15,7 @@ import { ToDoListItem } from './to-do-list-item/to-do-list-item';
 })
 
 export class ToDoList {
-  tasks: Tasks = [
+  tasks: ITask[] = [
     { id: 0, text: 'Buy a new gaming laptop', },
     { id: 1, text: 'Complete previous task', },
     { id: 2, text: 'Create some angular app', },
