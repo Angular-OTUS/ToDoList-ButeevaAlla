@@ -26,3 +26,43 @@ html {
         font-size: 14px;
     }
 }
+
+.overlay {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(189, 185, 185, 0.75);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    cursor: not-allowed;
+}
+
+.loader {
+    @size: 22px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    color: white;
+    box-shadow:
+        calc(1*@size) calc(0*@size) 0 0,
+        calc(0.707*@size) calc(0.707*@size) 0 1px,
+        calc(0*@size) calc(1*@size) 0 2px,
+        calc(-0.707*@size) calc(0.707*@size) 0 3px,
+        calc(-1*@size) calc(0*@size) 0 4px,
+        calc(-0.707*@size) calc(-0.707*@size)0 5px,
+        calc(0*@size) calc(-1*@size) 0 6px;
+    animation: l27 1s infinite steps(8);
+}
+
+@keyframes l27 {
+    100% {
+        transform: rotate(1turn)
+    }
+}
