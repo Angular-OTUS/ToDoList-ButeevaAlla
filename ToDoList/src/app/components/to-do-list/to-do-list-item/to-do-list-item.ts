@@ -6,7 +6,7 @@ import { ButtonComponent } from '../../button-component/button-component';
   selector: 'app-to-do-list-item',
   imports: [ButtonComponent],
   templateUrl: './to-do-list-item.html',
-  styleUrls: ['./to-do-list-item.less', '../../../shared-styles/mixins.less']
+  styleUrls: ['./to-do-list-item.less', '../../../shared-styles/mixins.less'],
 })
 export class ToDoListItem {
   @Input() task?: ITask;
