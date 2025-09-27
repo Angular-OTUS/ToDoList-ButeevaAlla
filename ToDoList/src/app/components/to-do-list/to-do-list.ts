@@ -4,8 +4,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 
-import { ITask } from '../../shared-sripts/interfaces';
+import { ITask, IButton } from '../../shared-sripts/interfaces';
 import { ToDoListItem } from './to-do-list-item/to-do-list-item';
+import { ButtonComponent } from '../button-component/button-component'
 
 @Component({
   selector: 'app-to-do-list',
@@ -14,13 +15,13 @@ import { ToDoListItem } from './to-do-list-item/to-do-list-item';
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
-    ToDoListItem
+    ToDoListItem,
+    ButtonComponent,
   ],
   templateUrl: './to-do-list.html',
   styleUrls: [
     './to-do-list.less',
     '../../shared-styles/mixins.less',
-    '../../shared-styles/buttons.less'
   ],
 })
 
@@ -32,6 +33,7 @@ export class ToDoList {
   ]
   public newTask: string = '';
   public isLoading: boolean = true;
+  public BtnParams: IButton = { title: 'Add task', class: 'button button_add td-form__button' };
 
   constructor(private cdr: ChangeDetectorRef) {
     this.changeVisiable();
@@ -43,15 +45,15 @@ export class ToDoList {
 
   public add(newTask: string): void {
     this.tasks.push(
-      { 
+      {
         id: Math.max(...this.tasks.map(task => task.id)) + 1,
-        text: newTask, 
+        text: newTask,
       }
     );
   }
 
   private changeVisiable(): void {
-        setTimeout(() => {
+    setTimeout(() => {
       this.isLoading = false;
       this.cdr.detectChanges();
     }, 1000);
