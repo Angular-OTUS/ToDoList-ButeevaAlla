@@ -7,7 +7,7 @@ import { ToDoList } from './components/to-do-list/to-do-list'
   selector: 'app-root',
   imports: [RouterOutlet, ToDoList],
   templateUrl: './app.html',
-  styleUrl: './app.less'
+  styleUrl: './app.less',
 })
 export class App {
   protected readonly title = signal('ToDoList-ButeevaAlla');
