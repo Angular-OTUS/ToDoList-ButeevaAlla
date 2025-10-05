@@ -1,4 +1,4 @@
-@if(isLoading()){
+@if (isLoading()) {
     <div class="overlay">
         <div class="loader"></div>
     </div>
@@ -8,18 +8,46 @@
 
         <ul class="tasks">
             @for (task of tasks; track task.id) {
-                <app-to-do-list-item [task]="task" (newItemEvent)="delete($event)" />
+                <app-to-do-list-item
+                    [task]="task"
+                    (newItemEvent)="delete($event)"
+                />
             } @empty {
                 <li>Let's start planning</li>
             }
         </ul>
 
-        <form class="mt-big row" #newTaskForm="ngForm">
+        <form class="mt-big" #newTaskForm="ngForm">
             <mat-form-field appearance="outline">
                 <mat-label>Add your new todo</mat-label>
-                <input matInput [(ngModel)]="newTask" name="newTask" required placeholder="Conquer the world" maxlength="50" minlength="2">
+                <input
+                    matInput
+                    [(ngModel)]="newTask.text"
+                    name="title"
+                    required
+                    placeholder="Conquer the world"
+                    maxlength="50"
+                    minlength="2"
+                    class="block"
+                />
             </mat-form-field>
-            <app-button-component [BtnParams]="BtnParams" type="submit" on-click="add(newTask);newTaskForm.reset()" />
+            <mat-form-field appearance="outline">
+                <mat-label>Add task description</mat-label>
+                <textarea
+                    matInput
+                    [(ngModel)]="newTask.description"
+                    name="description"
+                    required
+                    maxlength="50"
+                    minlength="2"
+                    class="block"
+                ></textarea>
+            </mat-form-field>
+            <app-button-component
+                [BtnParams]="BtnParams"
+                type="submit"
+                on-click="add(newTask); newTaskForm.reset()"
+            />
         </form>
     </div>
 }
