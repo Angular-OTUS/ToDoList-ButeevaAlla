@@ -3,10 +3,11 @@
     "semi": true,
     "arrowParens": "avoid",
     "singleQuote": true,
-    "printWidth": 180,
+    "printWidth": 120,
     "endOfLine": "auto",
     "bracketSpacing": false,
     "singleAttributePerLine": true,
+    "proseWrap": "preserve",
     "overrides": [
         {
             "files": "*.html",

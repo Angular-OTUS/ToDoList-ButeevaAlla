@@ -5,18 +5,23 @@
 } @else {
     <div>
         <h1>ToDo List</h1>
-
-        <ul class="tasks">
-            @for (task of tasks; track task.id) {
-                <app-to-do-list-item
-                    [task]="task"
-                    (newItemEvent)="delete($event)"
-                />
-            } @empty {
-                <li>Let's start planning</li>
+        <div class="block">
+            <ul class="tasks">
+                @for (task of tasks; track task.id) {
+                    <app-to-do-list-item
+                        [task]="task"
+                        [class.selected]="selectedItemId === task.id"
+                        (newItemEvent)="delete($event)"
+                        (click)="selectTask(task.id)"
+                    />
+                } @empty {
+                    <li>Let's start planning</li>
+                }
+            </ul>
+            @if (selectedItemId !== null) {
+                <p class="description">{{ tasks[selectedItemId].description }}</p>
             }
-        </ul>
-
+        </div>
         <form class="mt-big" #newTaskForm="ngForm">
             <mat-form-field appearance="outline">
                 <mat-label>Add your new todo</mat-label>
@@ -43,11 +48,7 @@
                     class="block"
                 ></textarea>
             </mat-form-field>
-            <app-button-component
-                [BtnParams]="BtnParams"
-                type="submit"
-                on-click="add(newTask); newTaskForm.reset()"
-            />
+            <app-button-component [BtnParams]="BtnParams" type="submit" on-click="add(newTask); newTaskForm.reset()" />
         </form>
     </div>
 }

@@ -1,3 +1,4 @@
+@import url(../../shared-styles/variables.less);
 :host {
     display: block;
     width: fit-content;
@@ -12,4 +13,23 @@
 
 .mat-mdc-form-field {
     display: block;
+}
+
+.block {
+    position: relative;
+}
+
+.description {
+    position: absolute;
+    left: 110%;
+    top: -0;
+    z-index: 2;
+    font-size: 14px;
+    box-sizing: border-box;
+    padding: 0.5rem 1rem;
+    background-color: @color-semiligh;
+    border-radius: 8px;
+    min-width: 200px;
+    min-height: 70px;
+    margin: 0;
 }
