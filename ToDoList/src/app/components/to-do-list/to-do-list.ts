@@ -47,8 +47,10 @@ export class ToDoList implements OnInit {
     this.tasks = this.tasks.filter((task) => task.id !== id);
   }
 
-  public selectTask(id: number): void {
+  public selectTask(id: number): ITask | undefined {
     this.selectedItemId = id;
+    const selectedTask = this.tasks.find((task) => task.id === this.selectedItemId);
+    return selectedTask;
   }
 
   public add(newTask: INewTask): void {

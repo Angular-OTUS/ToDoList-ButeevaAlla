@@ -19,7 +19,7 @@
                 }
             </ul>
             @if (selectedItemId !== null) {
-                <p class="description">{{ tasks[selectedItemId].description }}</p>
+                <p class="description">{{ selectTask(selectedItemId)?.description }}</p>
             }
         </div>
         <form class="mt-big" #newTaskForm="ngForm">
