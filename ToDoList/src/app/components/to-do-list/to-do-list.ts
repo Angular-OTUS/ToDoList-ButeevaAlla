@@ -13,7 +13,7 @@ import { ButtonComponent } from '../button-component/button-component';
   selector: 'app-to-do-list',
   imports: [MatButtonModule, MatFormFieldModule, MatInputModule, FormsModule, ToDoListItem, ButtonComponent],
   templateUrl: './to-do-list.html',
-  styleUrls: ['./to-do-list.less', '../../shared-styles/mixins.less'],
+  styleUrls: ['./to-do-list.less', '../../shared-styles/mixins.less', '../../shared-styles/tooltip.less'],
 })
 export class ToDoList implements OnInit {
   public tasks: ITask[] = [
@@ -39,7 +39,7 @@ export class ToDoList implements OnInit {
   public isLoading: WritableSignal<boolean> = signal<boolean>(true);
   public BtnParams: IButton = {
     title: 'Add task',
-    class: 'button button_add td-form__button',
+    class: 'button button_add',
   };
 
   public delete(id: number): void {

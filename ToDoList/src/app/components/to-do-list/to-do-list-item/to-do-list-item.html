@@ -3,6 +3,11 @@
         <div>
             <h2 class="task__title">{{ task.text }}</h2>
         </div>
-        <app-button-component [BtnParams]="BtnParams" (click)="delete(task.id); $event.stopPropagation()" />
+        <app-button-component
+            [BtnParams]="BtnParams"
+            (click)="delete(task.id); $event.stopPropagation()"
+            class="tooltip tooltip_bottom"
+            data-tooltip="Нажмите для удаления задачи"
+        />
     </li>
 }

@@ -13,6 +13,8 @@
                         [class.selected]="selectedItemId === task.id"
                         (newItemEvent)="delete($event)"
                         (click)="selectTask(task.id)"
+                        class="tooltip tooltip_top"
+                        data-tooltip="Нажмите для выбора задачи"
                     />
                 } @empty {
                     <li>Let's start planning</li>
@@ -48,7 +50,13 @@
                     class="block"
                 ></textarea>
             </mat-form-field>
-            <app-button-component [BtnParams]="BtnParams" type="submit" on-click="add(newTask); newTaskForm.reset()" />
+            <app-button-component
+                [BtnParams]="BtnParams"
+                type="submit"
+                on-click="add(newTask); newTaskForm.reset()"
+                class="right-aligned tooltip tooltip_bottom"
+                data-tooltip="Нажмите для добавления задачи"
+            />
         </form>
     </div>
 }
