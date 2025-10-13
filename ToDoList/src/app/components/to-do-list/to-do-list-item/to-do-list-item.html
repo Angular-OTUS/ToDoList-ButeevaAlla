@@ -6,8 +6,9 @@
         <app-button-component
             [BtnParams]="BtnParams"
             (click)="delete(task.id); $event.stopPropagation()"
-            class="tooltip tooltip_bottom"
-            data-tooltip="Нажмите для удаления задачи"
+            appTooltip
+            tooltipMessage="Нажмите для удаления задачи"
+            tooltipPosition="bottom"
         />
     </li>
 }

@@ -8,12 +8,13 @@ import { timer } from 'rxjs';
 import { INewTask, ITask, IButton } from '../../shared-sripts/interfaces';
 import { ToDoListItem } from './to-do-list-item/to-do-list-item';
 import { ButtonComponent } from '../button-component/button-component';
+import { Tooltip } from '../../directives/tooltip';
 
 @Component({
   selector: 'app-to-do-list',
-  imports: [MatButtonModule, MatFormFieldModule, MatInputModule, FormsModule, ToDoListItem, ButtonComponent],
+  imports: [MatButtonModule, MatFormFieldModule, MatInputModule, FormsModule, ToDoListItem, ButtonComponent, Tooltip],
   templateUrl: './to-do-list.html',
-  styleUrls: ['./to-do-list.less', '../../shared-styles/mixins.less', '../../shared-styles/tooltip.less'],
+  styleUrls: ['./to-do-list.less', '../../shared-styles/mixins.less'],
 })
 export class ToDoList implements OnInit {
   public tasks: ITask[] = [

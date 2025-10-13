@@ -1,19 +1,6 @@
-body {
-    font-family: Roboto, "Helvetica Neue", sans-serif;
-    box-sizing: border-box;
-    padding: 3.5rem 1rem;
-
-}
-
-@media (max-width: 768px) {
-    body {
-        padding: 2rem;
-    }
-}
-
-@media (max-width: 420px) {
-    body {
-        padding: 1rem;
+@keyframes l27 {
+    100% {
+        transform: rotate(1turn);
     }
 }
 
@@ -21,10 +8,10 @@ html {
     font-size: 16px;
 }
 
-@media (max-width: 1024px) {
-    html {
-        font-size: 14px;
-    }
+body {
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    box-sizing: border-box;
+    padding: 3.5rem 1rem;
 }
 
 .overlay {
@@ -51,18 +38,68 @@ html {
     border-radius: 50%;
     color: white;
     box-shadow:
-        calc(1*@size) calc(0*@size) 0 0,
-        calc(0.707*@size) calc(0.707*@size) 0 1px,
-        calc(0*@size) calc(1*@size) 0 2px,
-        calc(-0.707*@size) calc(0.707*@size) 0 3px,
-        calc(-1*@size) calc(0*@size) 0 4px,
-        calc(-0.707*@size) calc(-0.707*@size)0 5px,
-        calc(0*@size) calc(-1*@size) 0 6px;
+        calc(1 * @size) calc(0 * @size) 0 0,
+        calc(0.707 * @size) calc(0.707 * @size) 0 1px,
+        calc(0 * @size) calc(1 * @size) 0 2px,
+        calc(-0.707 * @size) calc(0.707 * @size) 0 3px,
+        calc(-1 * @size) calc(0 * @size) 0 4px,
+        calc(-0.707 * @size) calc(-0.707 * @size) 0 5px,
+        calc(0 * @size) calc(-1 * @size) 0 6px;
     animation: l27 1s infinite steps(8);
 }
 
-@keyframes l27 {
-    100% {
-        transform: rotate(1turn)
+.container {
+    position: relative;
+}
+
+.tooltip {
+    background: rgb(3, 3, 3);
+    font-size: 12px;
+    color: #fff;
+    padding: 3px 7px;
+    position: absolute;
+    z-index: 3;
+    min-width: 110px;
+    white-space: nowrap;
+}
+
+.tooltip_top {
+    left: 0;
+    top: -16px;
+    border-radius: 8px 8px 0 8px;
+}
+
+.tooltip_bottom {
+    bottom: -28px;
+    right: 10%;
+    transform: translateX(-10%);
+    border-radius: 8px 0 8px 8px;
+}
+
+.selected > .tooltip {
+    opacity: 1;
+    visibility: hidden;
+}
+
+.hide {
+    opacity: 0;
+    visibility: visible;
+}
+
+@media (max-width: 1024px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 420px) {
+    body {
+        padding: 1rem;
     }
 }
