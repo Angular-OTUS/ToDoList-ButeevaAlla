@@ -1,4 +1,4 @@
-import { Component, OnInit, signal, WritableSignal } from '@angular/core';
+import { Component, OnInit, signal, WritableSignal, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { timer } from 'rxjs';
 
 import { INewTask, ITask, IButton } from '../../shared-sripts/interfaces';
+import { TasksService } from '../../services/tasks';
 import { ToDoListItem } from './to-do-list-item/to-do-list-item';
 import { ButtonComponent } from '../button-component/button-component';
 import { Tooltip } from '../../directives/tooltip';
@@ -13,28 +14,13 @@ import { Tooltip } from '../../directives/tooltip';
 @Component({
   selector: 'app-to-do-list',
   imports: [MatButtonModule, MatFormFieldModule, MatInputModule, FormsModule, ToDoListItem, ButtonComponent, Tooltip],
+  providers: [TasksService],
   templateUrl: './to-do-list.html',
   styleUrls: ['./to-do-list.less', '../../shared-styles/mixins.less'],
 })
 export class ToDoList implements OnInit {
-  public tasks: ITask[] = [
-    {
-      id: 0,
-      text: 'Buy a new gaming laptop',
-      description:
-        'Quos ducimus officiis dolor. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, eligendi. ',
-    },
-    {
-      id: 1,
-      text: 'Complete previous task',
-      description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ducimus, eligendi.',
-    },
-    {
-      id: 2,
-      text: 'Create some angular app',
-      description: 'Autem ratione culpa nulla ipsam nihil asperiores natus deleniti doloribus dolorem quibusdam.',
-    },
-  ];
+  private tasksService: TasksService = inject(TasksService);
+  public tasks = this.tasksService.getTasks();
   public newTask: INewTask = { text: '', description: '' };
   public selectedItemId: number | null = null;
   public isLoading: WritableSignal<boolean> = signal<boolean>(true);
@@ -45,7 +31,8 @@ export class ToDoList implements OnInit {
 
   public delete(id: number): void {
     this.selectedItemId = null;
-    this.tasks = this.tasks.filter((task) => task.id !== id);
+    this.tasksService.deleteTask(id);
+    this.tasks = this.tasksService.getTasks();
   }
 
   public selectTask(id: number): ITask | undefined {
@@ -56,11 +43,7 @@ export class ToDoList implements OnInit {
 
   public add(newTask: INewTask): void {
     this.selectedItemId = null;
-    this.tasks.push({
-      id: Math.max(...this.tasks.map((task) => task.id)) + 1,
-      text: newTask.text,
-      description: newTask.description,
-    });
+    this.tasksService.addTask(newTask);
   }
 
   public ngOnInit(): void {
