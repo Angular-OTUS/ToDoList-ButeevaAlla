@@ -8,5 +8,5 @@ import { IButton } from '../../shared-sripts/interfaces';
   styleUrl: './button-component.less',
 })
 export class ButtonComponent {
-  @Input() BtnParams?: IButton;
+  @Input() btnParams?: IButton;
 }

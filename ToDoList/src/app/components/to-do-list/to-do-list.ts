@@ -24,7 +24,7 @@ export class ToDoList implements OnInit {
   public newTask: INewTask = { text: '', description: '' };
   public selectedItemId: number | null = null;
   public isLoading: WritableSignal<boolean> = signal<boolean>(true);
-  public BtnParams: IButton = {
+  public btnParams: IButton = {
     title: 'Add task',
     class: 'button button_add',
   };
@@ -37,8 +37,7 @@ export class ToDoList implements OnInit {
 
   public selectTask(id: number): ITask | undefined {
     this.selectedItemId = id;
-    const selectedTask = this.tasks.find((task) => task.id === this.selectedItemId);
-    return selectedTask;
+    return this.tasks.find((task) => task.id === this.selectedItemId);
   }
 
   public add(newTask: INewTask): void {

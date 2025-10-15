@@ -13,7 +13,7 @@ import { Tooltip } from '../../../directives/tooltip';
 export class ToDoListItem {
   @Input() task?: ITask;
   @Output() newItemEvent = new EventEmitter<number>();
-  BtnParams: IButton = { title: 'Delete', class: 'button_delete' };
+  btnParams: IButton = { title: 'Delete', class: 'button_delete' };
 
   delete(id: number): void {
     this.newItemEvent.emit(id);
