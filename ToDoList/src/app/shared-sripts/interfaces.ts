@@ -1,2 +1,11 @@
-export interface ITask { id: number, text: string, };
-export interface IButton { title: string, class: string, };
+export interface INewTask {
+  text: string;
+  description: string;
+}
+export interface ITask extends INewTask {
+  id: number;
+}
+export interface IButton {
+  title: string;
+  class: string;
+}

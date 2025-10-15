@@ -1,8 +1,19 @@
+@import url(../../../shared-styles/variables.less);
+:host {
+    background-color: rgb(44, 44, 45);
+}
+:host.selected {
+    background-color: @color-semiligh;
+}
 .task {
     box-sizing: border-box;
-    padding: .5rem 1rem;
-    background-color: rgb(44, 44, 45);
+    padding: 0.5rem 1rem;
     width: 100%;
     border-radius: 8px;
     align-items: center;
+    background-color: inherit;
+}
+.task__title {
+    font-size: 16px;
+    font-weight: 400;
 }

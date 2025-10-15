@@ -1,6 +1,14 @@
-@if(task){
-<li class="task row mb">
-    <span>{{ task.text }}</span>
-    <app-button-component [BtnParams]="BtnParams" (click)="delete(task.id)" />
-</li>
+@if (task) {
+    <li class="task row mb">
+        <div>
+            <h2 class="task__title">{{ task.text }}</h2>
+        </div>
+        <app-button-component
+            [BtnParams]="BtnParams"
+            (click)="delete(task.id); $event.stopPropagation()"
+            appTooltip
+            tooltipMessage="Нажмите для удаления задачи"
+            tooltipPosition="bottom"
+        />
+    </li>
 }

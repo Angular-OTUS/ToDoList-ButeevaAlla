@@ -1,15 +1,63 @@
+@import url(../../shared-styles/variables.less);
+@description-width: 200px;
+@scrollbar-width: 16px;
 :host {
     display: block;
     width: fit-content;
+    max-width: calc(100% - @description-width * 2 - 2rem);
     margin: auto;
 }
 
 .tasks {
     list-style: none;
-    padding: 0;
+    padding: 16px 0;
     font-size: 18px;
+    max-width: 800px;
+    max-height: 50vh;
+    overflow-y: auto;
+    overflow-x: visible;
+    box-sizing: border-box;
+    padding-right: @scrollbar-width;
 }
 
-.td-form__button {
-    height: 56px;
+.mat-mdc-form-field {
+    display: block;
+}
+
+.description {
+    position: absolute;
+    right: calc(@description-width * -1 - 1rem);
+    top: 0;
+    z-index: 2;
+    font-size: 14px;
+    box-sizing: border-box;
+    padding: 0.5rem 1rem;
+    background-color: @color-semiligh;
+    border-radius: 8px;
+    display: block;
+    min-height: 70px;
+    width: @description-width;
+    margin: 0;
+}
+
+.adding {
+    padding-right: @scrollbar-width;
+}
+.right-aligned {
+    display: block;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: 0;
+}
+
+@media (max-width: 800px) {
+    :host,
+    .tasks {
+        max-width: 100%;
+    }
+    .description {
+        position: static;
+        width: calc(100% - @scrollbar-width);
+        min-height: 36px;
+    }
 }

@@ -1,25 +1,62 @@
-@if(isLoading()){
+@if (isLoading()) {
     <div class="overlay">
         <div class="loader"></div>
     </div>
 } @else {
-    <div>
-        <h1>ToDo List</h1>
-
+    <h1>ToDo List</h1>
+    <div class="container">
         <ul class="tasks">
             @for (task of tasks; track task.id) {
-                <app-to-do-list-item [task]="task" (newItemEvent)="delete($event)" />
+                <app-to-do-list-item
+                    [task]="task"
+                    [class.selected]="selectedItemId === task.id"
+                    (newItemEvent)="delete($event)"
+                    (click)="selectTask(task.id)"
+                    appTooltip
+                    tooltipMessage="Нажмите для выбора задачи"
+                />
             } @empty {
                 <li>Let's start planning</li>
             }
         </ul>
-
-        <form class="mt-big row" #newTaskForm="ngForm">
-            <mat-form-field appearance="outline">
-                <mat-label>Add your new todo</mat-label>
-                <input matInput [(ngModel)]="newTask" name="newTask" required placeholder="Conquer the world" maxlength="50" minlength="2">
-            </mat-form-field>
-            <app-button-component [BtnParams]="BtnParams" type="submit" on-click="add(newTask);newTaskForm.reset()" />
-        </form>
+        @if (selectedItemId !== null) {
+            <p class="description">{{ selectTask(selectedItemId)?.description }}</p>
+        }
     </div>
+    <form class="mt-big adding" #newTaskForm="ngForm">
+        <mat-form-field appearance="outline">
+            <mat-label>Add your new todo</mat-label>
+            <input
+                matInput
+                [(ngModel)]="newTask.text"
+                name="title"
+                required
+                placeholder="Conquer the world"
+                maxlength="50"
+                minlength="2"
+                class="block"
+            />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Add task description</mat-label>
+            <textarea
+                matInput
+                [(ngModel)]="newTask.description"
+                name="description"
+                required
+                maxlength="50"
+                minlength="2"
+                class="block"
+            ></textarea>
+        </mat-form-field>
+        <app-button-component
+            class="right-aligned"
+            appTooltip
+            tooltipMessage="Нажмите для добавления задачи"
+            tooltipPosition="bottom"
+            [BtnParams]="BtnParams"
+            type="submit"
+            on-click="add(newTask); newTaskForm.reset()"
+        />
+    </form>
 }
