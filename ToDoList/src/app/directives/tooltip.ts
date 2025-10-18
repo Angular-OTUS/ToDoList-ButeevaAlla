@@ -7,25 +7,25 @@ export class Tooltip {
   @Input() public tooltipPosition?: string = 'top';
   private targetElementRef: ElementRef = inject(ElementRef);
   private targetElem = this.targetElementRef.nativeElement as HTMLElement;
-  private tooltipElement: HTMLElement | null = null;
 
   @HostListener('mouseenter') onMouseEnter() {
     this.create();
-    this.togglVisability();
   }
   @HostListener('mouseleave') onMouseLeave() {
-    this.togglVisability();
+    this.remove();
   }
   private create(): void {
-    if (!this.tooltipElement) {
-      const tooltipElem = `<span class="tooltip tooltip_${this.tooltipPosition} hide">${this.tooltipMessage}</span>`;
+    if (!this.targetElem.querySelector('.tooltip')) {
+      const tooltipElem = `<span class="tooltip tooltip_${this.tooltipPosition}">${this.tooltipMessage}</span>`;
       this.targetElem.classList.add('container');
       this.targetElem.insertAdjacentHTML('beforeend', tooltipElem);
-      this.tooltipElement = this.targetElem.querySelector('.tooltip');
     }
   }
 
-  private togglVisability() {
-    this.tooltipElement?.classList.toggle('hide');
+  private remove() {
+    if (this.targetElem.querySelector('.tooltip')) {
+      this.targetElem.querySelector('.tooltip')?.remove();
+      this.targetElem.classList.remove('container');
+    }
   }
 }

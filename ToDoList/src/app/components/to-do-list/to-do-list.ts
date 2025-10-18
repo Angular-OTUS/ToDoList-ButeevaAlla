@@ -1,5 +1,4 @@
 import { Component, OnInit, signal, WritableSignal, inject } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
@@ -13,7 +12,7 @@ import { Tooltip } from '../../directives/tooltip';
 
 @Component({
   selector: 'app-to-do-list',
-  imports: [MatButtonModule, MatFormFieldModule, MatInputModule, FormsModule, ToDoListItem, ButtonComponent, Tooltip],
+  imports: [MatFormFieldModule, MatInputModule, FormsModule, ToDoListItem, ButtonComponent, Tooltip],
   providers: [TasksService],
   templateUrl: './to-do-list.html',
   styleUrls: ['./to-do-list.less', '../../shared-styles/mixins.less'],

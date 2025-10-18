@@ -1,6 +1,21 @@
 @if (task) {
     <li class="task row mb">
-        <h2 class="task__title">{{ task.text }}</h2>
+        @if (!editMode() || selectedItemId !== task.id) {
+            <h2 class="task__title" (dblclick)="allowEditing()">{{ task.text }}</h2>
+        } @else {
+            <form class="full-wide" (submit)="disallowEditing()" #titleEditForm="ngForm">
+                <input
+                    [(ngModel)]="task.text"
+                    class="task__input"
+                    name="title"
+                    required
+                    maxlength="50"
+                    minlength="2"
+                    (blur)="disallowEditing()"
+                />
+                <button class="submit" type="submit" [disabled]="titleEditForm.invalid">&#9989;</button>
+            </form>
+        }
         <app-button-component
             [btnParams]="btnParams"
             (click)="delete(task.id); $event.stopPropagation()"
